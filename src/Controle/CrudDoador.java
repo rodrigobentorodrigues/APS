@@ -1,8 +1,8 @@
 
 package Controle;
 
+import interfaces.CrudDoadorIf;
 import Entidades.Doador;
-import Entidades.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrudDoador implements CrudDoad{
+public class CrudDoador implements CrudDoadorIf{
     
     private String url;
     private String user;

@@ -1,10 +1,9 @@
-
-package Controle;
+package interfaces;
 
 import Entidades.Funcionario;
 import java.util.List;
 
-public interface CrudFunc {
+public interface CrudFuncionarioIf {
 
     public void adicionar(Funcionario f);
     public void atualizar(Funcionario f);

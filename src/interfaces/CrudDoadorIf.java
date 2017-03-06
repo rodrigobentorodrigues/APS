@@ -1,10 +1,9 @@
-
-package Controle;
+package interfaces;
 
 import Entidades.Doador;
 import java.util.List;
 
-public interface CrudDoad {
+public interface CrudDoadorIf {
     
     public void adicionar(Doador d);
     public void atualizar(Doador d);

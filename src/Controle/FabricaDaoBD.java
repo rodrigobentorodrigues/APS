@@ -1,9 +1,12 @@
-
 package Controle;
 
-public class FabricaDaoBD implements FabricaDao{
+import interfaces.FabricaDaoIf;
 
-    public FabricaDaoBD(){};
+public class FabricaDaoBD implements FabricaDaoIf{
+
+    private static FabricaDaoBD instance;
+    
+    private FabricaDaoBD(){};
     
     @Override
     public CrudFuncionario criaCrudFuncionario() {
@@ -13,6 +16,14 @@ public class FabricaDaoBD implements FabricaDao{
     @Override
     public CrudDoador criaCrudDoador() {
         return new CrudDoador();
+    }
+    
+    public static synchronized FabricaDaoBD getInstance(){
+        if(instance == null){
+            return new FabricaDaoBD();
+        }else{
+            return instance;
+        }
     }
     
 }
