@@ -20,6 +20,7 @@ public class Inicial extends javax.swing.JFrame {
         ImageIcon logo = new ImageIcon("src/Imagens/icone.png");
         setIconImage(logo.getImage());
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

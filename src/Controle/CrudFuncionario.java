@@ -78,12 +78,12 @@ public class CrudFuncionario implements CrudFuncionarioIf{
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Funcionario auxiliar = new Funcionario();
-                auxiliar.setNome(rs.getString(2));
-                auxiliar.setSexo(rs.getString(3));
-                auxiliar.setHabilitacao(rs.getString(4));
-                auxiliar.setIdade(rs.getInt(5));
-                auxiliar.setEmail(rs.getString(6));
-                auxiliar.setSenha(rs.getString(7));
+                auxiliar.setNome(rs.getString(1));
+                auxiliar.setSexo(rs.getString(2));
+                auxiliar.setHabilitacao(rs.getString(3));
+                auxiliar.setIdade(rs.getInt(4));
+                auxiliar.setEmail(rs.getString(5));
+                auxiliar.setSenha(rs.getString(6));
                 lista.add(auxiliar);
             }
             stmt.close();
