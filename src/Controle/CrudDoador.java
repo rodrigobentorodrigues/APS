@@ -77,12 +77,12 @@ public class CrudDoador implements CrudDoadorIf{
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Doador auxiliar = new Doador();
-                auxiliar.setNome(rs.getString(2));
-                auxiliar.setCpf(rs.getString(3));
-                auxiliar.setDataNascimento(rs.getString(4));
-                auxiliar.setSexo(rs.getString(5));
-                auxiliar.setTipoSanguineo(rs.getString(6));
-                auxiliar.setPeso(rs.getDouble(7));
+                auxiliar.setNome(rs.getString(1));
+                auxiliar.setCpf(rs.getString(2));
+                auxiliar.setDataNascimento(rs.getString(3));
+                auxiliar.setSexo(rs.getString(4));
+                auxiliar.setTipoSanguineo(rs.getString(5));
+                auxiliar.setPeso(rs.getDouble(6));
                 lista.add(auxiliar);
             }
             stmt.close();

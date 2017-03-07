@@ -5,7 +5,11 @@
  */
 package Visao;
 
+import Controle.GerenciadorFuncionario;
+import Entidades.Funcionario;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +20,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     /**
      * Creates new form CadastroFuncionario
      */
-    
     public CadastroFuncionario() {
         ImageIcon logo = new ImageIcon("src/Imagens/icone.png");
         setIconImage(logo.getImage());
@@ -55,7 +58,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         Confirmar = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -91,8 +94,18 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         campoSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         Limpar.setText("Limpar");
+        Limpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimparActionPerformed(evt);
+            }
+        });
 
         Confirmar.setText("Confirmar");
+        Confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,6 +210,44 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
+        limparTela();
+    }//GEN-LAST:event_LimparActionPerformed
+
+    private void limparTela(){
+        campoNome.setText("");
+        campoHabilitacao.setText("");
+        campoIdade.setText("");
+        campoEmail.setText("");
+        campoSenha.setText("");
+    }
+    
+    private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
+        String nome = campoNome.getText();
+        String sexo = (String) campoSexo.getSelectedItem();
+        String habilitacao = campoHabilitacao.getText();
+        int idade = Integer.parseInt(campoIdade.getText());
+        String email = campoEmail.getText();
+        String senha = campoSenha.getText();
+        GerenciadorFuncionario gerenciador = new GerenciadorFuncionario();
+        List<Funcionario> lista = gerenciador.listar();
+        boolean possuiEmail = false;
+        for (Funcionario aux : lista) {
+            if (aux.getEmail().equals(email)) {
+                possuiEmail = true;
+            }
+        }
+        if (!possuiEmail) {
+            gerenciador.adicionaFuncionario(nome, sexo, habilitacao, idade, email, senha);
+            JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Ja possui um usuario com esse email",
+                    "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
+            limparTela();
+        }
+    }//GEN-LAST:event_ConfirmarActionPerformed
 
     /**
      * @param args the command line arguments

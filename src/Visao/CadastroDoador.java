@@ -5,7 +5,13 @@
  */
 package Visao;
 
+import Controle.GerenciadorDoador;
+import Entidades.Doador;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,7 +50,6 @@ public class CadastroDoador extends javax.swing.JFrame {
         nome = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
         dataNascimento = new com.toedter.calendar.JDateChooser();
-        sexo = new javax.swing.JTextField();
         peso = new javax.swing.JTextField();
         tipoSanguineo = new javax.swing.JTextField();
         Salvar = new javax.swing.JButton();
@@ -65,8 +70,9 @@ public class CadastroDoador extends javax.swing.JFrame {
         aidsSim = new javax.swing.JCheckBox();
         barbeiroNao = new javax.swing.JCheckBox();
         barbeiroSim = new javax.swing.JCheckBox();
+        sexo = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -94,12 +100,27 @@ public class CadastroDoador extends javax.swing.JFrame {
 
         Salvar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         Salvar.setText("Salvar");
+        Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvarActionPerformed(evt);
+            }
+        });
 
         Limpar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         Limpar.setText("Limpar");
+        Limpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimparActionPerformed(evt);
+            }
+        });
 
         Voltar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         Voltar.setText("Voltar");
+        Voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VoltarActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Já usou drogas?");
@@ -117,24 +138,76 @@ public class CadastroDoador extends javax.swing.JFrame {
         jLabel12.setText("Teve contato com o mosquito barbeiro?");
 
         drogasSim.setText("Sim");
+        drogasSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drogasSimActionPerformed(evt);
+            }
+        });
 
         drogasNao.setText("Não");
+        drogasNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drogasNaoActionPerformed(evt);
+            }
+        });
 
         hepatiteNao.setText("Não");
+        hepatiteNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hepatiteNaoActionPerformed(evt);
+            }
+        });
 
         hepatiteSim.setText("Sim");
+        hepatiteSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hepatiteSimActionPerformed(evt);
+            }
+        });
 
         diabetesSim.setText("Sim");
+        diabetesSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diabetesSimActionPerformed(evt);
+            }
+        });
 
         diabetesNao.setText("Não");
+        diabetesNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diabetesNaoActionPerformed(evt);
+            }
+        });
 
         aidsNao.setText("Não");
+        aidsNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aidsNaoActionPerformed(evt);
+            }
+        });
 
         aidsSim.setText("Sim");
+        aidsSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aidsSimActionPerformed(evt);
+            }
+        });
 
         barbeiroNao.setText("Não");
+        barbeiroNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                barbeiroNaoActionPerformed(evt);
+            }
+        });
 
         barbeiroSim.setText("Sim");
+        barbeiroSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                barbeiroSimActionPerformed(evt);
+            }
+        });
+
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -147,9 +220,8 @@ public class CadastroDoador extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -159,9 +231,9 @@ public class CadastroDoador extends javax.swing.JFrame {
                             .addComponent(nome)
                             .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                             .addComponent(dataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(sexo, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                             .addComponent(peso, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                            .addComponent(tipoSanguineo, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                            .addComponent(tipoSanguineo, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .addComponent(sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Salvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -217,16 +289,15 @@ public class CadastroDoador extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(sexo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,29 +315,29 @@ public class CadastroDoador extends javax.swing.JFrame {
                     .addComponent(drogasSim)
                     .addComponent(drogasNao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(hepatiteSim)
-                        .addComponent(hepatiteNao)))
+                        .addComponent(hepatiteNao))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(diabetesSim)
-                        .addComponent(diabetesNao)))
+                        .addComponent(diabetesNao))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(aidsSim)
-                        .addComponent(aidsNao)))
+                        .addComponent(aidsNao))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(barbeiroSim)
-                        .addComponent(barbeiroNao)))
+                        .addComponent(barbeiroNao))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -280,11 +351,179 @@ public class CadastroDoador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparActionPerformed
+        limparTela();
+    }//GEN-LAST:event_LimparActionPerformed
+
+    private void limparTela(){
+        nome.setText("");
+        cpf.setText("");
+        peso.setText("");
+        tipoSanguineo.setText("");
+        Date hora = new Date();
+        hora.getTime();
+        dataNascimento.setDate(hora);
+        drogasSim.setSelected(false);
+        drogasNao.setSelected(false);
+        aidsSim.setSelected(false);
+        aidsNao.setSelected(false);
+        diabetesSim.setSelected(false);
+        diabetesNao.setSelected(false);
+        hepatiteSim.setSelected(false);
+        hepatiteNao.setSelected(false);
+        barbeiroSim.setSelected(false);
+        barbeiroNao.setSelected(false);
+    }
+    
+    private void drogasSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drogasSimActionPerformed
+        boolean estado = drogasSim.isSelected();
+        if (estado) {
+            drogasNao.setSelected(false);
+        }
+    }//GEN-LAST:event_drogasSimActionPerformed
+
+    private void drogasNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drogasNaoActionPerformed
+        boolean estado = drogasNao.isSelected();
+        if (estado) {
+            drogasSim.setSelected(false);
+        }
+    }//GEN-LAST:event_drogasNaoActionPerformed
+
+    private void hepatiteSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hepatiteSimActionPerformed
+        boolean estado = hepatiteSim.isSelected();
+        if (estado) {
+            hepatiteNao.setSelected(false);
+        }
+    }//GEN-LAST:event_hepatiteSimActionPerformed
+
+    private void hepatiteNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hepatiteNaoActionPerformed
+        boolean estado = hepatiteNao.isSelected();
+        if (estado) {
+            hepatiteSim.setSelected(false);
+        }
+    }//GEN-LAST:event_hepatiteNaoActionPerformed
+
+    private void diabetesSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diabetesSimActionPerformed
+        boolean estado = diabetesSim.isSelected();
+        if (estado) {
+            diabetesNao.setSelected(false);
+        }
+    }//GEN-LAST:event_diabetesSimActionPerformed
+
+    private void diabetesNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diabetesNaoActionPerformed
+        boolean estado = diabetesNao.isSelected();
+        if (estado) {
+            diabetesSim.setSelected(false);
+        }
+    }//GEN-LAST:event_diabetesNaoActionPerformed
+
+    private void aidsSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aidsSimActionPerformed
+        boolean estado = aidsSim.isSelected();
+        if (estado) {
+            aidsNao.setSelected(false);
+        }
+    }//GEN-LAST:event_aidsSimActionPerformed
+
+    private void aidsNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aidsNaoActionPerformed
+        boolean estado = aidsNao.isSelected();
+        if (estado) {
+            aidsSim.setSelected(false);
+        }
+    }//GEN-LAST:event_aidsNaoActionPerformed
+
+    private void barbeiroSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barbeiroSimActionPerformed
+        boolean estado = barbeiroSim.isSelected();
+        if (estado) {
+            barbeiroNao.setSelected(false);
+        }
+    }//GEN-LAST:event_barbeiroSimActionPerformed
+
+    private void barbeiroNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barbeiroNaoActionPerformed
+        boolean estado = barbeiroNao.isSelected();
+        if (estado) {
+            barbeiroSim.setSelected(false);
+        }
+    }//GEN-LAST:event_barbeiroNaoActionPerformed
+
+    private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_VoltarActionPerformed
+
+    private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
+        String nomeUsu = nome.getText();
+        String cpfUsu = cpf.getText();
+        String sexoUsu = (String) sexo.getSelectedItem();
+        String p = peso.getText();
+        p = p.replace(",", ".");
+        double pesoUsu = Double.parseDouble(p);
+        String rh = tipoSanguineo.getText();
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        String data = f.format(dataNascimento.getDate());
+        boolean valido = true;
+        boolean campo = true;
+        if (drogasNao.isSelected()) {
+            valido = false;
+        }
+        if((!drogasSim.isSelected() && !drogasNao.isSelected())){
+            campo = false;
+        }
+        if (aidsNao.isSelected()) {
+            valido = false;
+        }
+        if((!aidsSim.isSelected() && !aidsNao.isSelected())){
+            campo = false;
+        }
+        if (hepatiteNao.isSelected()) {
+            valido = false;
+        }
+        if((!hepatiteSim.isSelected() && !hepatiteNao.isSelected())){
+            campo = false;
+        }
+        if (barbeiroNao.isSelected()) {
+            valido = false;
+        }
+        if((!barbeiroSim.isSelected() && !barbeiroNao.isSelected())){
+            campo = false;
+        }
+        if (diabetesNao.isSelected()) {
+            valido = false;
+        }
+        if((!diabetesSim.isSelected() && !diabetesNao.isSelected())){
+            campo = false;
+        }
+        if (!valido) {
+            JOptionPane.showMessageDialog(null, "Pessoa não atende aos requisitos para ser um doador",
+                    "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
+            limparTela();
+        } else if (!campo){
+            JOptionPane.showMessageDialog(null, "Campos de requisitos não informados",
+                    "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
+        } else {
+            GerenciadorDoador gerenciador = new GerenciadorDoador();
+            List<Doador> lista = gerenciador.listar();
+            boolean possuiCpf = false;
+            for (Doador aux : lista) {
+                if (aux.getCpf().equals(cpfUsu)) {
+                    possuiCpf = true;
+                } 
+            }
+            if (!possuiCpf) {
+                gerenciador.adicionarDoador(nomeUsu, cpfUsu, data, sexoUsu, rh, pesoUsu);
+                JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ja possui um doador com esse CPF",
+                        "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+            }
+        }
+    }//GEN-LAST:event_SalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,7 +592,7 @@ public class CadastroDoador extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nome;
     private javax.swing.JTextField peso;
-    private javax.swing.JTextField sexo;
+    private javax.swing.JComboBox<String> sexo;
     private javax.swing.JTextField tipoSanguineo;
     // End of variables declaration//GEN-END:variables
 }
