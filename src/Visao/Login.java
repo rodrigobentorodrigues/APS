@@ -9,6 +9,7 @@ import Controle.GerenciadorFuncionario;
 import Entidades.Funcionario;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -150,16 +151,21 @@ public class Login extends javax.swing.JFrame {
         
         String login = jTextField1.getText();
         String senha = jTextField2.getText();
-                
+        Inicial inicial = null;
+        
         GerenciadorFuncionario gf = new GerenciadorFuncionario();
         List<Funcionario> lista = gf.listar();
         
         for(Funcionario func : lista){
             if(func.getEmail().equals(login) && func.getSenha().equals(senha)){
-                Inicial inicial = new Inicial();
+                inicial = new Inicial();
                 inicial.setVisible(true);
                 this.dispose();
             }
+        }
+        
+        if(inicial == null){
+            JOptionPane.showMessageDialog(null, "Login Invalido");
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

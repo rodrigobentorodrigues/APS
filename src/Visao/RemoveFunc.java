@@ -20,6 +20,7 @@ public class RemoveFunc extends javax.swing.JFrame {
     public RemoveFunc() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**

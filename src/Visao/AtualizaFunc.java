@@ -22,6 +22,7 @@ public class AtualizaFunc extends javax.swing.JFrame {
     public AtualizaFunc() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**

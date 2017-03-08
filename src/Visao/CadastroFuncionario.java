@@ -25,6 +25,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         setIconImage(logo.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
