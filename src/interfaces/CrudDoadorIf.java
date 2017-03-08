@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface CrudDoadorIf {
     
-    public void adicionar(Doador d);
-    public void atualizar(Doador d);
+    public boolean adicionar(Doador d);
+    public boolean atualizar(Doador d);
     public List<Doador> listar();
-    public void remover(String cpf);
+    public boolean remover(String cpf);
     
 }

@@ -30,9 +30,12 @@ public class CrudFuncionario implements CrudFuncionarioIf{
     }
 
     @Override
-    public void adicionar(Funcionario f) {
+    public boolean adicionar(Funcionario f) {
         String sql = "INSERT INTO funcionario VALUES(?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt;
+        
+        int vrf = 0;
+        
         try {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, f.getNome());
@@ -41,17 +44,22 @@ public class CrudFuncionario implements CrudFuncionarioIf{
             stmt.setInt(4, f.getIdade());
             stmt.setString(5, f.getEmail());
             stmt.setString(6, f.getSenha());
-            stmt.executeUpdate();
+            vrf = stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        
+        return vrf > 0;
     }
 
     @Override
-    public void atualizar(Funcionario f) {
+    public boolean atualizar(Funcionario f) {
         String sql = "UPDATE funcionario SET nome = ?, sexo = ?, habilitacao = ?, idade = ?, email = ?, senha = ? WHERE email = ?";
         PreparedStatement stmt;
+        
+        int vrf = 0;
+        
         try {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, f.getNome());
@@ -61,11 +69,13 @@ public class CrudFuncionario implements CrudFuncionarioIf{
             stmt.setString(5, f.getEmail());
             stmt.setString(6, f.getSenha());
             stmt.setString(7, f.getEmail());
-            stmt.executeUpdate();
+            vrf = stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        
+        return vrf > 0;
     }
 
     @Override
@@ -90,19 +100,24 @@ public class CrudFuncionario implements CrudFuncionarioIf{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        
         return lista;
     }
 
     @Override
-    public void remover(String f) {
+    public boolean remover(String f) {
         String sql = "DELETE FROM funcionario WHERE email = '" + f + "'";
         PreparedStatement stmt;
+
+        int vrf = 0;
+        
         try {
             stmt = con.prepareStatement(sql);
-            stmt.executeUpdate();
+            vrf = stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return vrf > 0;
     }
 }

@@ -33,98 +33,212 @@ public class Inicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        cadastraDoador = new javax.swing.JButton();
+        cadastraFunc = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        tiragem = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        removerFunc = new javax.swing.JButton();
+        atualizaFunc = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        realizaDoacao = new javax.swing.JButton();
+        consultaFunc = new javax.swing.JButton();
+        ConsultaDoador = new javax.swing.JButton();
+        ConsultaDoacoes = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton3.setText("Cadastrar Doador");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cadastraDoador.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        cadastraDoador.setText("Cadastrar Doador");
+        cadastraDoador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cadastraDoadorActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton4.setText("Cadastrar Funcionario");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        cadastraFunc.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        cadastraFunc.setText("Cadastrar Funcionario");
+        cadastraFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                cadastraFuncActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton5.setText("Controle de Estoque");
 
-        jButton6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton6.setText("Triagem");
+        tiragem.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        tiragem.setText("Triagem");
 
-        jButton7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton7.setText("Gráfico de Doações");
+        jButton7.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jButton7.setText("Grafico de Doacoes");
+
+        jLabel1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jLabel1.setText("Funcionário");
+
+        removerFunc.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        removerFunc.setText("Remover Funcionario");
+        removerFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerFuncActionPerformed(evt);
+            }
+        });
+
+        atualizaFunc.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        atualizaFunc.setText("Atualizar Funcionario");
+        atualizaFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizaFuncActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jLabel2.setText("Doador");
+
+        realizaDoacao.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        realizaDoacao.setText("Realizar Doacao");
+        realizaDoacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                realizaDoacaoActionPerformed(evt);
+            }
+        });
+
+        consultaFunc.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        consultaFunc.setText("Consultar Funcionario");
+
+        ConsultaDoador.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        ConsultaDoador.setText("Consulta Doador");
+
+        ConsultaDoacoes.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        ConsultaDoacoes.setText("Consultar Doacoes");
+
+        jLabel3.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jLabel3.setText("Estoque");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cadastraDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tiragem, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(realizaDoacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSeparator2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cadastraFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(removerFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(atualizaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ConsultaDoacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ConsultaDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(consultaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton4, jButton5, jButton6, jButton7});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadastraDoador, cadastraFunc, jButton5, jButton7, tiragem});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cadastraFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removerFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(atualizaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(consultaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cadastraDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(realizaDoacao, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tiragem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addComponent(ConsultaDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ConsultaDoacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void realizaDoacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizaDoacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_realizaDoacaoActionPerformed
+
+    private void cadastraFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraFuncActionPerformed
         CadastroFuncionario tela = new CadastroFuncionario();
         tela.setVisible(true);
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_cadastraFuncActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void cadastraDoadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraDoadorActionPerformed
         CadastroDoador tela = new CadastroDoador();
         tela.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_cadastraDoadorActionPerformed
+
+    private void removerFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerFuncActionPerformed
+        RemoveFunc tela = new RemoveFunc();
+        tela.setVisible(true);
+    }//GEN-LAST:event_removerFuncActionPerformed
+
+    private void atualizaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizaFuncActionPerformed
+        AtualizaFunc tela = new AtualizaFunc();
+        tela.setVisible(true);
+    }//GEN-LAST:event_atualizaFuncActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,11 +276,23 @@ public class Inicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton ConsultaDoacoes;
+    private javax.swing.JButton ConsultaDoador;
+    private javax.swing.JButton atualizaFunc;
+    private javax.swing.JButton cadastraDoador;
+    private javax.swing.JButton cadastraFunc;
+    private javax.swing.JButton consultaFunc;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JButton realizaDoacao;
+    private javax.swing.JButton removerFunc;
+    private javax.swing.JButton tiragem;
     // End of variables declaration//GEN-END:variables
 }

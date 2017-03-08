@@ -10,18 +10,18 @@ public class GerenciadorDoador {
     
     public GerenciadorDoador(){};
     
-    public void adicionarDoador(String nome, String cpf, String dataNascimento, String sexo, String tipoSanguineo, double peso){
+    public boolean adicionarDoador(String nome, String cpf, String dataNascimento, String sexo, String tipoSanguineo, double peso){
         Doador d = new Doador(nome, cpf, dataNascimento, sexo, tipoSanguineo, peso);
         FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
         CrudDoadorIf cad = fabrica.criaCrudDoador();
-        cad.adicionar(d);
+        return cad.adicionar(d);
     }
     
-    public void atualizarDoador(String nome, String cpf, String dataNascimento, String sexo, String tipoSanguineo, double peso){
+    public boolean atualizarDoador(String nome, String cpf, String dataNascimento, String sexo, String tipoSanguineo, double peso){
         Doador d = new Doador(nome, cpf, dataNascimento, sexo, tipoSanguineo, peso);        
         FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
         CrudDoadorIf cad = fabrica.criaCrudDoador();
-        cad.atualizar(d);
+        return cad.atualizar(d);
     } 
     
     public List<Doador> listar(){
@@ -32,10 +32,10 @@ public class GerenciadorDoador {
         return lista;
     }
     
-    public void remover (String cpf){
+    public boolean remover (String cpf){
         FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
         CrudDoadorIf cad = fabrica.criaCrudDoador();
-        cad.remover(cpf);
+        return cad.remover(cpf);
     }
     
 }

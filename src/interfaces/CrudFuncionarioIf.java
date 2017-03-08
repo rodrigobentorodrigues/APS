@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface CrudFuncionarioIf {
 
-    public void adicionar(Funcionario f);
-    public void atualizar(Funcionario f);
+    public boolean adicionar(Funcionario f);
+    public boolean atualizar(Funcionario f);
     public List<Funcionario> listar();
-    public void remover(String email);
+    public boolean remover(String email);
     
 }

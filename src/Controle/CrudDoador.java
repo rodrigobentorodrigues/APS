@@ -30,9 +30,12 @@ public class CrudDoador implements CrudDoadorIf{
     }
     
     @Override
-    public void adicionar (Doador d){
+    public boolean adicionar (Doador d){
         String sql = "INSERT INTO doador VALUES(?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt;
+        
+        int vrf = 0;
+        
         try {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, d.getNome());
@@ -41,16 +44,21 @@ public class CrudDoador implements CrudDoadorIf{
             stmt.setString(4, d.getSexo());
             stmt.setString(5, d.getTipoSanguineo());
             stmt.setDouble(6, d.getPeso());
-            stmt.executeUpdate();
+            vrf = stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex){
             ex.printStackTrace();
         }
+        
+        return vrf > 0;
     }
     @Override
-    public void atualizar (Doador d){
+    public boolean atualizar (Doador d){
         String sql = "UPDATE doador SET nome = ?, cpf = ?, dataNascimento = ?, sexo = ?, tipoSanguineo = ?, peso = ? where cpf = ?";
         PreparedStatement stmt;
+        
+        int vrf = 0;
+        
         try {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, d.getNome());
@@ -60,11 +68,13 @@ public class CrudDoador implements CrudDoadorIf{
             stmt.setString(5, d.getTipoSanguineo());
             stmt.setDouble(6, d.getPeso());
             stmt.setString(7, d.getCpf());
-            stmt.executeUpdate();
+            vrf = stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex){
             ex.printStackTrace();
         }
+        
+        return vrf > 0;
     }
     
     @Override
@@ -93,15 +103,20 @@ public class CrudDoador implements CrudDoadorIf{
     }
     
     @Override
-    public void remover(String cpf){
+    public boolean remover(String cpf){
         String sql = "DELETE FROM doador WHERE cpf = '"+cpf+"'";
         PreparedStatement stmt;
+        
+        int vrf = 0;
+        
         try {
             stmt = con.prepareStatement(sql);
-            stmt.executeUpdate();
+            vrf = stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        
+        return vrf > 0;
     }
 }

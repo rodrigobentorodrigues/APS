@@ -10,24 +10,24 @@ public class GerenciadorFuncionario {
     
     public GerenciadorFuncionario(){};
     
-    public void adicionaFuncionario(String nome, String sexo, String habilitacao, int idade, String email, String senha){
+    public boolean adicionaFuncionario(String nome, String sexo, String habilitacao, int idade, String email, String senha){
         Funcionario f = new Funcionario(nome, sexo, habilitacao, idade, email, senha);
         FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
         CrudFuncionarioIf cad = fabrica.criaCrudFuncionario();
-        cad.adicionar(f);
+        return cad.adicionar(f);
     }
     
-    public void removerFuncionario(String email){
+    public boolean removerFuncionario(String email){
         FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
         CrudFuncionarioIf cad = fabrica.criaCrudFuncionario();
-        cad.remover(email);
+        return cad.remover(email);
     }
     
-    public void atualizarFuncionario(String nome, String sexo, String habilitacao, int idade, String email, String senha){
+    public boolean atualizarFuncionario(String nome, String sexo, String habilitacao, int idade, String email, String senha){
         Funcionario f = new Funcionario(nome, sexo, habilitacao, idade, email, senha);
         FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
         CrudFuncionarioIf cad = fabrica.criaCrudFuncionario();
-        cad.atualizar(f);
+        return cad.atualizar(f);
     }
     
     public List<Funcionario> listar(){
