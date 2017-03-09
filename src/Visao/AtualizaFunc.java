@@ -257,9 +257,11 @@ public class AtualizaFunc extends javax.swing.JFrame {
         }
         
         if(!vrf){
-            JOptionPane.showMessageDialog(null, "não foi possivel realizar a atualizacao, o email informado e invalido");
+            JOptionPane.showMessageDialog(null, "Não foi possivel realizar a atualizacao, o email informado é invalido",
+                    "Email invalido !", JOptionPane.ERROR_MESSAGE);
+            limparTela();
         }else{
-            JOptionPane.showMessageDialog(null, "funcionario atualizado");
+            JOptionPane.showMessageDialog(null, "Funcionario atualizado");
             this.dispose();
         }
         

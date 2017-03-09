@@ -6,21 +6,21 @@
 package Visao;
 
 import Controle.GerenciadorFuncionario;
+import Entidades.Funcionario;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Juan
+ * @author rodri
  */
-public class RemoveFunc extends javax.swing.JFrame {
+public class ConsultarFunc extends javax.swing.JFrame {
 
     /**
-     * Creates new form RemoveFunc
+     * Creates new form ConsultarFunc
      */
-    public RemoveFunc() {
+    public ConsultarFunc() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -36,7 +36,7 @@ public class RemoveFunc extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        remover = new javax.swing.JButton();
+        consultar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -45,16 +45,18 @@ public class RemoveFunc extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
-        jLabel1.setText("Remocao de Funcionario");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Consulta de Funcionario");
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Informe o email do funcionario");
 
-        remover.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        remover.setText("Remover");
-        remover.addActionListener(new java.awt.event.ActionListener() {
+        consultar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        consultar.setText("Consultar");
+        consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removerActionPerformed(evt);
+                consultarActionPerformed(evt);
             }
         });
 
@@ -62,50 +64,44 @@ public class RemoveFunc extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(remover, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 25, Short.MAX_VALUE)))
+                        .addGap(140, 140, 140)
+                        .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(remover, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,20 +111,27 @@ public class RemoveFunc extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerActionPerformed
+    private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
         GerenciadorFuncionario gf = new GerenciadorFuncionario();
         if(!email.getText().equals("")){
-            if(gf.removerFuncionario(email.getText())){
-                JOptionPane.showMessageDialog(null, "Funcionario deletado com sucesso");
+            List<Funcionario> lista = gf.listar();
+            boolean vrf = false;
+            for (Funcionario f: lista){
+                if (f.getEmail().equals(email.getText())){
+                    vrf = true;
+                }
+            }
+            if(vrf){
+                JOptionPane.showMessageDialog(null, "Esse funcionario esta cadastrado no sistema");
             }else{
-                JOptionPane.showMessageDialog(null, "O Funcionario selecionado não existe ou ja foi excluido",
+                JOptionPane.showMessageDialog(null, "Não possui esse funcionario no sistema",
                     "Funcionario não encontrado !", JOptionPane.ERROR_MESSAGE);
             }
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Preencha o campo de email");
         }
-    }//GEN-LAST:event_removerActionPerformed
+    }//GEN-LAST:event_consultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,30 +150,30 @@ public class RemoveFunc extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RemoveFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RemoveFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RemoveFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RemoveFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RemoveFunc().setVisible(true);
+                new ConsultarFunc().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton consultar;
     private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton remover;
     // End of variables declaration//GEN-END:variables
 }

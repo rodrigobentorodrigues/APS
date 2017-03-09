@@ -112,6 +112,11 @@ public class Inicial extends javax.swing.JFrame {
 
         consultaFunc.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         consultaFunc.setText("Consultar Funcionario");
+        consultaFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaFuncActionPerformed(evt);
+            }
+        });
 
         ConsultaDoador.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         ConsultaDoador.setText("Consulta Doador");
@@ -239,6 +244,11 @@ public class Inicial extends javax.swing.JFrame {
         AtualizaFunc tela = new AtualizaFunc();
         tela.setVisible(true);
     }//GEN-LAST:event_atualizaFuncActionPerformed
+
+    private void consultaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFuncActionPerformed
+        ConsultarFunc c = new ConsultarFunc();
+        c.setVisible(true);
+    }//GEN-LAST:event_consultaFuncActionPerformed
 
     /**
      * @param args the command line arguments
