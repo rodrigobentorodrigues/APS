@@ -1,25 +1,27 @@
+package Visao;
+
+
+import Controle.GerenciadorDoador;
+import Entidades.Doador;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Visao;
-
-import Controle.GerenciadorFuncionario;
-import Entidades.Funcionario;
-import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
- * @author rodri
+ * @author Juan
  */
-public class ConsultarFunc extends javax.swing.JFrame {
+public class ConsultarDoador extends javax.swing.JFrame {
 
     /**
-     * Creates new form ConsultarFunc
+     * Creates new form ConsultarDoador
      */
-    public ConsultarFunc() {
+    public ConsultarDoador() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -36,23 +38,23 @@ public class ConsultarFunc extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
+        nome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         consultar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Consulta de Funcionario");
+        jLabel1.setText("Consulta de Doadores");
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Informe o email do funcionario");
+        jLabel2.setText("Informe o nome do doador");
 
         consultar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         consultar.setText("Consultar");
@@ -68,7 +70,7 @@ public class ConsultarFunc extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,8 +94,8 @@ public class ConsultarFunc extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
@@ -114,22 +116,24 @@ public class ConsultarFunc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
-        GerenciadorFuncionario gf = new GerenciadorFuncionario();
-        if(!email.getText().equals("")){
-            List<Funcionario> lista = gf.listar();
-            Funcionario func = null;
+        GerenciadorDoador gf = new GerenciadorDoador();
+        if(!nome.getText().equals("")){
+            List<Doador> lista = gf.listar();
+            Doador doador = null;
             boolean vrf = false;
-            for (Funcionario f: lista){
-                if (f.getEmail().equals(email.getText())){
+            for (Doador d: lista){
+                if (d.getNome().equals(nome.getText())){
                     vrf = true;
-                    func = f;
+                    doador = d;
                 }
             }
             if(vrf){
-                JOptionPane.showMessageDialog(null, func.getNome() + "\n" + func.getHabilitacao() + "\n" + func.getSexo());
+                JOptionPane.showMessageDialog(null, doador.getNome() + "\n" + doador.getCpf() + 
+                "\n" + doador.getDataNascimento() + "\n" + doador.getTipoSanguineo() + "\n" + doador.getSexo() 
+                + "\n" + doador.getPeso());
             }else{
                 JOptionPane.showMessageDialog(null, "Não possui esse funcionario no sistema",
-                        "Funcionario não encontrado !", JOptionPane.ERROR_MESSAGE);
+                    "Funcionario não encontrado !", JOptionPane.ERROR_MESSAGE);
             }
         }else{
             JOptionPane.showMessageDialog(null, "Preencha o campo de email");
@@ -153,30 +157,30 @@ public class ConsultarFunc extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultarFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarDoador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultarFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarDoador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultarFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarDoador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultarFunc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarDoador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultarFunc().setVisible(true);
+                new ConsultarDoador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultar;
-    private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField nome;
     // End of variables declaration//GEN-END:variables
 }

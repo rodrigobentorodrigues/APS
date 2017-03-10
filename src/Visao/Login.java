@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
         setIconImage(logo.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     /**

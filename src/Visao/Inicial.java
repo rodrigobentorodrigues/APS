@@ -21,6 +21,7 @@ public class Inicial extends javax.swing.JFrame {
         setIconImage(logo.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     /**
@@ -36,7 +37,7 @@ public class Inicial extends javax.swing.JFrame {
         cadastraDoador = new javax.swing.JButton();
         cadastraFunc = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        tiragem = new javax.swing.JButton();
+        triagem = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -44,7 +45,6 @@ public class Inicial extends javax.swing.JFrame {
         atualizaFunc = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        realizaDoacao = new javax.swing.JButton();
         consultaFunc = new javax.swing.JButton();
         ConsultaDoador = new javax.swing.JButton();
         ConsultaDoacoes = new javax.swing.JButton();
@@ -74,8 +74,13 @@ public class Inicial extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton5.setText("Controle de Estoque");
 
-        tiragem.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        tiragem.setText("Triagem");
+        triagem.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        triagem.setText("Triagem");
+        triagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                triagemActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton7.setText("Grafico de Doacoes");
@@ -102,14 +107,6 @@ public class Inicial extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel2.setText("Doador");
 
-        realizaDoacao.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        realizaDoacao.setText("Realizar Doacao");
-        realizaDoacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                realizaDoacaoActionPerformed(evt);
-            }
-        });
-
         consultaFunc.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         consultaFunc.setText("Consultar Funcionario");
         consultaFunc.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +117,11 @@ public class Inicial extends javax.swing.JFrame {
 
         ConsultaDoador.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         ConsultaDoador.setText("Consulta Doador");
+        ConsultaDoador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultaDoadorActionPerformed(evt);
+            }
+        });
 
         ConsultaDoacoes.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         ConsultaDoacoes.setText("Consultar Doacoes");
@@ -135,12 +137,6 @@ public class Inicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cadastraDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(tiragem, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(realizaDoacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jSeparator2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(cadastraFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,12 +148,17 @@ public class Inicial extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cadastraDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(triagem, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ConsultaDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(ConsultaDoacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ConsultaDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
@@ -166,7 +167,7 @@ public class Inicial extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadastraDoador, cadastraFunc, jButton5, jButton7, tiragem});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadastraDoador, cadastraFunc, jButton5, jButton7, triagem});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,11 +190,10 @@ public class Inicial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cadastraDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(realizaDoacao, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiragem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ConsultaDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(triagem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ConsultaDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,10 +221,6 @@ public class Inicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void realizaDoacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizaDoacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_realizaDoacaoActionPerformed
-
     private void cadastraFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraFuncActionPerformed
         CadastroFuncionario tela = new CadastroFuncionario();
         tela.setVisible(true);
@@ -246,9 +242,19 @@ public class Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_atualizaFuncActionPerformed
 
     private void consultaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFuncActionPerformed
-        ConsultarFunc c = new ConsultarFunc();
-        c.setVisible(true);
+        ConsultarFunc tela = new ConsultarFunc();
+        tela.setVisible(true);
     }//GEN-LAST:event_consultaFuncActionPerformed
+
+    private void ConsultaDoadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDoadorActionPerformed
+        ConsultarDoador tela = new ConsultarDoador();
+        tela.setVisible(true);
+    }//GEN-LAST:event_ConsultaDoadorActionPerformed
+
+    private void triagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_triagemActionPerformed
+        Triagem tela = new Triagem();
+        tela.setVisible(true);
+    }//GEN-LAST:event_triagemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,8 +307,7 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JButton realizaDoacao;
     private javax.swing.JButton removerFunc;
-    private javax.swing.JButton tiragem;
+    private javax.swing.JButton triagem;
     // End of variables declaration//GEN-END:variables
 }
