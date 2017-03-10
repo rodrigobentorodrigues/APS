@@ -5,6 +5,8 @@
  */
 package Visao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan
@@ -162,6 +164,11 @@ public class Triagem extends javax.swing.JFrame {
 
         concluir.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         concluir.setText("Concluir");
+        concluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                concluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -306,6 +313,50 @@ public class Triagem extends javax.swing.JFrame {
     private void bebidaNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidaNaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bebidaNaoActionPerformed
+
+    private void concluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_concluirActionPerformed
+        boolean vrfs = true;
+        boolean vrfn = true;
+        
+        if(this.gripeSim.isSelected())
+            vrfs = false;
+        else if(!this.gripeNao.isSelected())
+                vrfn = false;
+        if(this.bebidaSim.isSelected())
+            vrfs = false;
+        else if(!this.bebidaNao.isSelected())
+                vrfn = false;
+        if(this.tatuagemSim.isSelected())
+            vrfs = false;
+        else if(!this.tatuagemNao.isSelected())
+                vrfn = false;
+        if(this.vacinaSim.isSelected())
+            vrfs = false;
+        else if(!this.vacinaNao.isSelected())
+                vrfn = false;
+        if(this.herpesSim.isSelected())
+            vrfs = false;
+        else if(!this.herpesNao.isSelected())
+                vrfn = false;
+        if(this.faSim.isSelected())
+            vrfs = false;
+        else if(!this.faNao.isSelected())
+                vrfn = false;
+        
+        if(!vrfn){
+            JOptionPane.showMessageDialog(null, "todas as informações necessárias não foram preenchidas", "Ops!", 
+            0);  
+        }else if(vrfs){
+//                RealizarDoacao tela = new RealizarDoacao();
+//                tela.setVisible(true);
+//                this.dispose();
+              }else{
+                  JOptionPane.showMessageDialog(null, "Esse doador não está em condições de realizar alguma doação atualmente", 
+                  "Ops!", 0);
+                  this.dispose();
+              }
+        
+    }//GEN-LAST:event_concluirActionPerformed
 
     /**
      * @param args the command line arguments
