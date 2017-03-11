@@ -3,6 +3,11 @@ package Visao;
 import Controle.GerenciadorDoacao;
 import Controle.GerenciadorDoador;
 import Entidades.Doador;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -20,9 +25,10 @@ public class RealizarDoacao extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         Date hora = new Date();
-        hora.getTime();
         data.setDate(hora);
         data.setEnabled(false);
+        nome.setEnabled(false);
+        fatorrh.setEnabled(false);
     }
 
     /**
@@ -39,7 +45,6 @@ public class RealizarDoacao extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        cpf = new javax.swing.JTextField();
         buscar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -51,6 +56,7 @@ public class RealizarDoacao extends javax.swing.JFrame {
         confirmar = new javax.swing.JButton();
         limpar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
+        cpf = new javax.swing.JFormattedTextField();
 
         jLabel3.setText("jLabel3");
 
@@ -107,6 +113,12 @@ public class RealizarDoacao extends javax.swing.JFrame {
             }
         });
 
+        try {
+            cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,16 +150,16 @@ public class RealizarDoacao extends javax.swing.JFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(fatorrh, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 15, Short.MAX_VALUE)))
+                        .addGap(0, 15, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(confirmar)
+                        .addGap(40, 40, 40)
+                        .addComponent(limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(confirmar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,8 +171,8 @@ public class RealizarDoacao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cpf)
-                    .addComponent(buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                    .addComponent(buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(cpf))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -180,7 +192,7 @@ public class RealizarDoacao extends javax.swing.JFrame {
                     .addComponent(limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,8 +237,6 @@ public class RealizarDoacao extends javax.swing.JFrame {
             if (exist) {
                 nome.setText(n.getNome());
                 fatorrh.setText(n.getTipoSanguineo());
-                nome.setEnabled(false);
-                fatorrh.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Não existe um doador cadastrado com esse CPF",
                         "CPF Invalido !", JOptionPane.ERROR_MESSAGE);
@@ -251,14 +261,35 @@ public class RealizarDoacao extends javax.swing.JFrame {
             limparTela();
         } else {
             SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat h = new SimpleDateFormat("hh:mm:ss");
             String date = f.format(data.getDate());
+            String hora = h.format(data.getDate());
             String cpfDoador = cpf.getText();
             String nomeDoador = nome.getText();
             String fator = fatorrh.getText();
             GerenciadorDoacao cad = new GerenciadorDoacao();
             if(cad.adicionar(cpfDoador, nomeDoador, fator, date)){
-                JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
-                this.dispose();
+                
+                try{
+                    File arquivo = new File("C:/logs/log.txt");
+                    if(!arquivo.exists()){
+                        arquivo.createNewFile();
+                    }
+
+                    String log = date + ": " + hora + " " + cpfDoador + " - " + nomeDoador + "> " + fator;
+                    
+                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(arquivo, true)));
+
+                    bw.write(log);
+                    bw.newLine();
+                    bw.close();
+                    
+                    JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
+                    this.dispose();
+                
+                }catch(IOException ex){  
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao salvar doacao",
                     "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
@@ -305,7 +336,7 @@ public class RealizarDoacao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
     private javax.swing.JButton confirmar;
-    private javax.swing.JTextField cpf;
+    private javax.swing.JFormattedTextField cpf;
     private com.toedter.calendar.JDateChooser data;
     private javax.swing.JTextField fatorrh;
     private javax.swing.JLabel jLabel1;
