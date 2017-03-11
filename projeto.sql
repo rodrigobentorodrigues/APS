@@ -19,6 +19,7 @@ CREATE TABLE doador (
 );
 
 CREATE TABLE doacao(
+	cpf varchar(15) REFERENCES doador(cpf),
 	nome character varying(40) NOT NULL,
 	fatorrh character varying(3) NOT NULL,
 	datadedoacao character varying(10),

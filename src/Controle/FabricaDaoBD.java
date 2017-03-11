@@ -18,6 +18,11 @@ public class FabricaDaoBD implements FabricaDaoIf{
         return new CrudDoador();
     }
     
+    @Override
+    public CrudDoacao criaCrudDoacao(){
+        return new CrudDoacao();
+    }
+    
     public static synchronized FabricaDaoBD getInstance(){
         if(instance == null){
             return new FabricaDaoBD();

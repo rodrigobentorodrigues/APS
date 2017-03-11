@@ -5,6 +5,7 @@
  */
 package Visao;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,8 @@ public class Triagem extends javax.swing.JFrame {
      * Creates new form Triagem
      */
     public Triagem() {
+        ImageIcon logo = new ImageIcon("src/Imagens/icone.png");
+        setIconImage(logo.getImage());
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -73,6 +76,11 @@ public class Triagem extends javax.swing.JFrame {
         gripeNao.setBackground(new java.awt.Color(255, 255, 255));
         gripeNao.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         gripeNao.setText("Não");
+        gripeNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gripeNaoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel2.setText("Ingeriu bebida alcóolica nas últimas 12 horas :");
@@ -110,6 +118,11 @@ public class Triagem extends javax.swing.JFrame {
         tatuagemNao.setBackground(new java.awt.Color(255, 255, 255));
         tatuagemNao.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         tatuagemNao.setText("Não");
+        tatuagemNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tatuagemNaoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel4.setText("Tomou vacina para gripe nas últimas 48 horas :");
@@ -126,6 +139,11 @@ public class Triagem extends javax.swing.JFrame {
         vacinaNao.setBackground(new java.awt.Color(255, 255, 255));
         vacinaNao.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         vacinaNao.setText("Não");
+        vacinaNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vacinaNaoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel5.setText("Possui herpes labial ou genital :");
@@ -142,6 +160,11 @@ public class Triagem extends javax.swing.JFrame {
         herpesNao.setBackground(new java.awt.Color(255, 255, 255));
         herpesNao.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         herpesNao.setText("Não");
+        herpesNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                herpesNaoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel6.setText("Esteve atualmente em (AC AM AP RO RR MA MG PA TO) :");
@@ -158,6 +181,11 @@ public class Triagem extends javax.swing.JFrame {
         faNao.setBackground(new java.awt.Color(255, 255, 255));
         faNao.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         faNao.setText("Não");
+        faNao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                faNaoActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel7.setText("Triagem");
@@ -287,76 +315,138 @@ public class Triagem extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gripeSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gripeSimActionPerformed
-        // TODO add your handling code here:
+        boolean cond = gripeSim.isSelected();
+        if (cond){
+            gripeNao.setSelected(false);
+        }
     }//GEN-LAST:event_gripeSimActionPerformed
 
     private void bebidaSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidaSimActionPerformed
-        // TODO add your handling code here:
+        boolean cond = bebidaSim.isSelected();
+        if (cond){
+            bebidaNao.setSelected(false);
+        }
     }//GEN-LAST:event_bebidaSimActionPerformed
 
     private void tatuagemSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tatuagemSimActionPerformed
-        // TODO add your handling code here:
+        boolean cond = tatuagemSim.isSelected();
+        if (cond){
+            tatuagemNao.setSelected(false);
+        }
     }//GEN-LAST:event_tatuagemSimActionPerformed
 
     private void vacinaSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vacinaSimActionPerformed
-        // TODO add your handling code here:
+        boolean cond = vacinaSim.isSelected();
+        if (cond){
+            vacinaNao.setSelected(false);
+        }
     }//GEN-LAST:event_vacinaSimActionPerformed
 
     private void herpesSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herpesSimActionPerformed
-        // TODO add your handling code here:
+        boolean cond = herpesSim.isSelected();
+        if (cond){
+            herpesNao.setSelected(false);
+        }
     }//GEN-LAST:event_herpesSimActionPerformed
 
     private void faSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faSimActionPerformed
-        // TODO add your handling code here:
+        boolean cond = faSim.isSelected();
+        if (cond){
+            faNao.setSelected(false);
+        }
     }//GEN-LAST:event_faSimActionPerformed
 
     private void bebidaNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidaNaoActionPerformed
-        // TODO add your handling code here:
+        boolean cond = bebidaNao.isSelected();
+        if (cond){
+            bebidaSim.setSelected(false);
+        }
     }//GEN-LAST:event_bebidaNaoActionPerformed
 
     private void concluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_concluirActionPerformed
         boolean vrfs = true;
         boolean vrfn = true;
-        
-        if(this.gripeSim.isSelected())
+
+        if (this.gripeSim.isSelected()) {
             vrfs = false;
-        else if(!this.gripeNao.isSelected())
-                vrfn = false;
-        if(this.bebidaSim.isSelected())
+        } else if (!this.gripeNao.isSelected()) {
+            vrfn = false;
+        }
+        if (this.bebidaSim.isSelected()) {
             vrfs = false;
-        else if(!this.bebidaNao.isSelected())
-                vrfn = false;
-        if(this.tatuagemSim.isSelected())
+        } else if (!this.bebidaNao.isSelected()) {
+            vrfn = false;
+        }
+        if (this.tatuagemSim.isSelected()) {
             vrfs = false;
-        else if(!this.tatuagemNao.isSelected())
-                vrfn = false;
-        if(this.vacinaSim.isSelected())
+        } else if (!this.tatuagemNao.isSelected()) {
+            vrfn = false;
+        }
+        if (this.vacinaSim.isSelected()) {
             vrfs = false;
-        else if(!this.vacinaNao.isSelected())
-                vrfn = false;
-        if(this.herpesSim.isSelected())
+        } else if (!this.vacinaNao.isSelected()) {
+            vrfn = false;
+        }
+        if (this.herpesSim.isSelected()) {
             vrfs = false;
-        else if(!this.herpesNao.isSelected())
-                vrfn = false;
-        if(this.faSim.isSelected())
+        } else if (!this.herpesNao.isSelected()) {
+            vrfn = false;
+        }
+        if (this.faSim.isSelected()) {
             vrfs = false;
-        else if(!this.faNao.isSelected())
-                vrfn = false;
-        
-        if(!vrfn){
-            JOptionPane.showMessageDialog(null, "todas as informações necessárias não foram preenchidas", "Ops!", 
-            0);  
-        }else if(vrfs){
-//                RealizarDoacao tela = new RealizarDoacao();
-//                tela.setVisible(true);
-//                this.dispose();
-              }else{
-                  JOptionPane.showMessageDialog(null, "Esse doador não está em condições de realizar alguma doação atualmente", 
-                  "Ops!", 0);
-                  this.dispose();
-              }
-        
+        } else if (!this.faNao.isSelected()) {
+            vrfn = false;
+        }
+
+        if (!vrfn) {
+            JOptionPane.showMessageDialog(null, "todas as informações necessárias não foram preenchidas", "Ops!",
+                    0);
+        } else if (vrfs) {
+                RealizarDoacao tela = new RealizarDoacao();
+                tela.setVisible(true);
+                this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Esse doador não está em condições de realizar alguma doação atualmente",
+                    "Ops!", 0);
+            this.dispose();
+        }
+
     }//GEN-LAST:event_concluirActionPerformed
+
+    private void gripeNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gripeNaoActionPerformed
+        boolean cond = gripeNao.isSelected();
+        if (cond){
+            gripeSim.setSelected(false);
+        }
+    }//GEN-LAST:event_gripeNaoActionPerformed
+
+    private void tatuagemNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tatuagemNaoActionPerformed
+        boolean cond = tatuagemNao.isSelected();
+        if (cond){
+            tatuagemSim.setSelected(false);
+        }
+    }//GEN-LAST:event_tatuagemNaoActionPerformed
+
+    private void vacinaNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vacinaNaoActionPerformed
+        boolean cond = vacinaNao.isSelected();
+        if (cond){
+            vacinaSim.setSelected(false);
+        }
+    }//GEN-LAST:event_vacinaNaoActionPerformed
+
+    private void herpesNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herpesNaoActionPerformed
+        boolean cond = herpesNao.isSelected();
+        if (cond){
+            herpesSim.setSelected(false);
+        }
+    }//GEN-LAST:event_herpesNaoActionPerformed
+
+    private void faNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faNaoActionPerformed
+        boolean cond = faNao.isSelected();
+        if (cond){
+            faSim.setSelected(false);
+        }
+    }//GEN-LAST:event_faNaoActionPerformed
 
     /**
      * @param args the command line arguments
