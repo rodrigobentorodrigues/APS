@@ -116,9 +116,9 @@ public class ConsultarDoador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
-        GerenciadorDoador gf = new GerenciadorDoador();
+        GerenciadorDoador gd = new GerenciadorDoador();
         if(!nome.getText().equals("")){
-            List<Doador> lista = gf.listar();
+            List<Doador> lista = gd.listar();
             Doador doador = null;
             boolean vrf = false;
             for (Doador d: lista){

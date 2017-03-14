@@ -5,7 +5,12 @@
  */
 package Visao;
 
+import Controle.GerenciadorDoacao;
+import Entidades.Doacao;
+import java.io.File;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -125,6 +130,11 @@ public class Inicial extends javax.swing.JFrame {
 
         ConsultaDoacoes.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         ConsultaDoacoes.setText("Consultar Doacoes");
+        ConsultaDoacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultaDoacoesActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel3.setText("Estoque");
@@ -255,6 +265,40 @@ public class Inicial extends javax.swing.JFrame {
         Triagem tela = new Triagem();
         tela.setVisible(true);
     }//GEN-LAST:event_triagemActionPerformed
+
+    private void ConsultaDoacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDoacoesActionPerformed
+        File log = new File("C:/logs/log.txt");
+        
+        if(log.exists()){
+            //infelizmente a preguiça me fez fazer isso, nao queria criar outra tela so pra pegar o nome do cara
+            String nome = JOptionPane.showInputDialog(null, "Informe o nome do doador");
+            GerenciadorDoacao gd = new GerenciadorDoacao();
+            if(!(nome == null)){
+                if(!nome.equals("")){
+                    List<Doacao> lista = gd.listar();
+
+                    StringBuilder stb = new StringBuilder("");
+
+                    for (Doacao doc : lista) {
+                        if(nome.equals(doc.getNome()))
+                            stb.append(doc.getCpf() + ": " + doc.getHora() + " - " + doc.getData() + "\n");
+                    }
+
+                    if(stb.toString().equals("")){
+                        JOptionPane.showMessageDialog(null, "nenhuma doação foi realizada por este doador");
+                    }else{
+                        JOptionPane.showMessageDialog(null, stb);
+                    }
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "Digite o nome do doador!!!");
+                }
+            }    
+        }else{
+            JOptionPane.showMessageDialog(null, "não foram feitas doações ainda", "Ops!", JOptionPane.ERROR_MESSAGE);
+            log.delete();
+        }
+    }//GEN-LAST:event_ConsultaDoacoesActionPerformed
 
     /**
      * @param args the command line arguments

@@ -268,7 +268,7 @@ public class RealizarDoacao extends javax.swing.JFrame {
             String nomeDoador = nome.getText();
             String fator = fatorrh.getText();
             GerenciadorDoacao cad = new GerenciadorDoacao();
-            if(cad.adicionar(cpfDoador, nomeDoador, fator, date)){
+            if(cad.adicionar(cpfDoador, nomeDoador, fator, date, hora)){
                 
                 try{
                     File arquivo = new File("C:/logs/log.txt");
@@ -276,7 +276,7 @@ public class RealizarDoacao extends javax.swing.JFrame {
                         arquivo.createNewFile();
                     }
 
-                    String log = date + ": " + hora + " " + cpfDoador + " - " + nomeDoador + "> " + fator;
+                    String log = date + " as " + hora + " - " + cpfDoador + " - " + nomeDoador + "> " + fator;
                     
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(arquivo, true)));
 

@@ -13,18 +13,11 @@ public class GerenciadorDoacao {
 
     ;
     
-    public boolean adicionar(String cpf, String nome, String fator, String data) {
-        Doacao d = new Doacao(cpf, nome, fator, data);
+    public boolean adicionar(String cpf, String nome, String fator, String data, String hora) {
+        Doacao d = new Doacao(cpf, nome, fator, data, hora);
         FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
         CrudDoacaoIf cad = fabrica.criaCrudDoacao();
         return cad.adicionar(d);
-    }
-
-    public boolean atualizar(String cpf, String nome, String fator, String data) {
-        Doacao d = new Doacao(cpf, nome, fator, data);
-        FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
-        CrudDoacaoIf cad = fabrica.criaCrudDoacao();
-        return cad.atualizar(d);
     }
 
     public boolean remover(String cpf) {

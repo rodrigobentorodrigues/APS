@@ -23,5 +23,6 @@ CREATE TABLE doacao(
 	nome character varying(40) NOT NULL,
 	fatorrh character varying(3) NOT NULL,
 	datadedoacao character varying(10),
+	hora varchar(8),
 	primary key(nome, fatorrh, datadedoacao)
 );  

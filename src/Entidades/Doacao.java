@@ -9,12 +9,22 @@ public class Doacao {
     private String nome;
     private String tipoSanguineo;
     private String data;
+    private String hora;
 
-    public Doacao(String cpf, String nome, String tipoSanguineo, String data) {
+    public Doacao(String cpf, String nome, String tipoSanguineo, String data, String hora) {
         this.cpf = cpf;
         this.nome = nome;
         this.tipoSanguineo = tipoSanguineo;
         this.data = data;
+        this.hora = hora;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
     }
     
     public Doacao(){};
@@ -53,19 +63,17 @@ public class Doacao {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.cpf);
-        hash = 97 * hash + Objects.hashCode(this.nome);
-        hash = 97 * hash + Objects.hashCode(this.tipoSanguineo);
-        hash = 97 * hash + Objects.hashCode(this.data);
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.cpf);
+        hash = 23 * hash + Objects.hashCode(this.nome);
+        hash = 23 * hash + Objects.hashCode(this.tipoSanguineo);
+        hash = 23 * hash + Objects.hashCode(this.data);
+        hash = 23 * hash + Objects.hashCode(this.hora);
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -85,14 +93,15 @@ public class Doacao {
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
+        if (!Objects.equals(this.hora, other.hora)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Doacao{" + "cpf=" + cpf + ", nome=" + nome + ", tipoSanguineo=" + tipoSanguineo + ", data=" + data + '}';
+        return "Doacao{" + "cpf=" + cpf + ", nome=" + nome + ", tipoSanguineo=" + tipoSanguineo + ", data=" + data + ", hora=" + hora + '}';
     }
-    
-    
     
 }

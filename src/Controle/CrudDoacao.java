@@ -9,8 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CrudDoacao implements CrudDoacaoIf {
 
@@ -34,7 +32,7 @@ public class CrudDoacao implements CrudDoacaoIf {
 
     @Override
     public boolean adicionar(Doacao d) {
-        String sql = "INSERT INTO doacao VALUES(?, ?, ?, ? )";
+        String sql = "INSERT INTO doacao VALUES(?, ?, ?, ?, ?)";
         PreparedStatement stmt;
         int vrf = 0;
         try {
@@ -43,26 +41,7 @@ public class CrudDoacao implements CrudDoacaoIf {
             stmt.setString(2, d.getNome());
             stmt.setString(3, d.getTipoSanguineo());
             stmt.setString(4, d.getData());
-            vrf = stmt.executeUpdate();
-            stmt.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return vrf > 0;
-    }
-
-    @Override
-    public boolean atualizar(Doacao d) {
-        String sql = "UPDATE doacao SET cpf = ?, nome = ?,  fatorrh = ?, data = ? WHERE cpf = ?";
-        PreparedStatement stmt;
-        int vrf = 0;
-        try {
-            stmt = con.prepareStatement(sql);
-            stmt.setString(1, d.getCpf());
-            stmt.setString(2, d.getNome());
-            stmt.setString(3, d.getTipoSanguineo());
-            stmt.setString(4, d.getData());
-            stmt.setString(5, d.getCpf());
+            stmt.setString(5, d.getHora());
             vrf = stmt.executeUpdate();
             stmt.close();
         } catch (SQLException ex) {
@@ -85,6 +64,7 @@ public class CrudDoacao implements CrudDoacaoIf {
                 aux.setNome(rs.getString(2));
                 aux.setTipoSanguineo(rs.getString(3));
                 aux.setData(rs.getString(4));
+                aux.setHora(rs.getString(5));
                 lista.add(aux);
             }
             stmt.close();
