@@ -8,9 +8,11 @@ package Visao;
 import Controle.GerenciadorDoacao;
 import Entidades.Doacao;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,7 +43,7 @@ public class Inicial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         cadastraDoador = new javax.swing.JButton();
         cadastraFunc = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        estoque = new javax.swing.JButton();
         triagem = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -76,8 +78,13 @@ public class Inicial extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton5.setText("Controle de Estoque");
+        estoque.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        estoque.setText("Controle de Estoque");
+        estoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estoqueActionPerformed(evt);
+            }
+        });
 
         triagem.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         triagem.setText("Triagem");
@@ -164,7 +171,7 @@ public class Inicial extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(ConsultaDoador, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(ConsultaDoacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -177,7 +184,7 @@ public class Inicial extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadastraDoador, cadastraFunc, jButton5, jButton7, triagem});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadastraDoador, cadastraFunc, estoque, jButton7, triagem});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +216,7 @@ public class Inicial extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ConsultaDoacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -300,6 +307,30 @@ public class Inicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ConsultaDoacoesActionPerformed
 
+    private void estoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estoqueActionPerformed
+        List<Doacao> lista = new ArrayList<>();
+        GerenciadorDoacao gd = new GerenciadorDoacao();
+        lista = gd.listar();
+        if(lista.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Não possui nenhuma doação cadastrada",
+                    "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String [] titulos  = {"Nome", "Tipo Sanguineo", "Data"};
+            int size = lista.size();
+            System.out.println(size);
+            String [][] matriz = new String [size][3];
+            for(int i = 0; i < size; i++){
+                matriz[i][0] = lista.get(i).getNome();
+                matriz[i][1] = lista.get(i).getTipoSanguineo();
+                matriz[i][2] = lista.get(i).getData();
+            }
+            DefaultTableModel modelo = new DefaultTableModel(matriz, titulos);
+            ControleEstoque tela = new ControleEstoque();
+            tela.setVisible(true);
+            tela.tabela(modelo);
+        }
+    }//GEN-LAST:event_estoqueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,7 +373,7 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JButton cadastraDoador;
     private javax.swing.JButton cadastraFunc;
     private javax.swing.JButton consultaFunc;
-    private javax.swing.JButton jButton5;
+    public javax.swing.JButton estoque;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

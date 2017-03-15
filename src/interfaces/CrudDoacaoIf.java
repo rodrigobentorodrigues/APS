@@ -7,6 +7,6 @@ public interface CrudDoacaoIf {
 
     public boolean adicionar(Doacao d);
     public List<Doacao> listar();
-    public boolean remover(String cpf);
+    public boolean remover(String nome);
 
 }

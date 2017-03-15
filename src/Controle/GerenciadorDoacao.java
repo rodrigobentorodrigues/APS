@@ -20,10 +20,10 @@ public class GerenciadorDoacao {
         return cad.adicionar(d);
     }
 
-    public boolean remover(String cpf) {
+    public boolean remover(String nome) {
         FabricaDaoIf fabrica = FabricaDaoC.criarFabrica();
         CrudDoacaoIf cad = fabrica.criaCrudDoacao();
-        return cad.remover(cpf);
+        return cad.remover(nome);
     }
     
     public List<Doacao> listar(){

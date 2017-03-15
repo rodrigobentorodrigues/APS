@@ -2,6 +2,7 @@ package Visao;
 
 import Controle.GerenciadorDoacao;
 import Controle.GerenciadorDoador;
+import Entidades.Doacao;
 import Entidades.Doador;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -268,33 +269,46 @@ public class RealizarDoacao extends javax.swing.JFrame {
             String nomeDoador = nome.getText();
             String fator = fatorrh.getText();
             GerenciadorDoacao cad = new GerenciadorDoacao();
-            if(cad.adicionar(cpfDoador, nomeDoador, fator, date, hora)){
-                
-                try{
-                    File arquivo = new File("C:/logs/log.txt");
-                    if(!arquivo.exists()){
-                        arquivo.createNewFile();
-                    }
-
-                    String log = date + " as " + hora + " - " + cpfDoador + " - " + nomeDoador + "> " + fator;
-                    
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(arquivo, true)));
-
-                    bw.write(log);
-                    bw.newLine();
-                    bw.close();
-                    
-                    JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
-                    this.dispose();
-                
-                }catch(IOException ex){  
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
+            boolean cond = false;
+            for (Doacao aux : cad.listar()) {
+                if (aux.getNome().equals(nomeDoador)) {
+                    cond = true;
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao salvar doacao",
-                    "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
-                limparTela();
             }
+            if (cond) {
+                JOptionPane.showMessageDialog(null, "Essa pessoa ja fez uma doação",
+                        "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+            } else {
+                if (cad.adicionar(cpfDoador, nomeDoador, fator, date, hora)) {
+
+                    try {
+                        File arquivo = new File("C:/logs/log.txt");
+                        if (!arquivo.exists()) {
+                            arquivo.createNewFile();
+                        }
+
+                        String log = date + " as " + hora + " - " + cpfDoador + " - " + nomeDoador + "> " + fator;
+
+                        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(arquivo, true)));
+
+                        bw.write(log);
+                        bw.newLine();
+                        bw.close();
+
+                        JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
+                        this.dispose();
+
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar doacao",
+                            "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
+                    limparTela();
+                }
+            }
+
         }
     }//GEN-LAST:event_confirmarActionPerformed
 

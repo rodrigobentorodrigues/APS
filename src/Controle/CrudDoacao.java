@@ -75,8 +75,8 @@ public class CrudDoacao implements CrudDoacaoIf {
     }
 
     @Override
-    public boolean remover(String cpf) {
-        String sql = "DELETE FROM doacao WHERE cpf = '" + cpf + "'";
+    public boolean remover(String nome) {
+        String sql = "DELETE FROM doacao WHERE nome = '" + nome + "'";
         PreparedStatement stmt;
         int vrf = 0;
         try {
