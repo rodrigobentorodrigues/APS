@@ -21,7 +21,10 @@ public class ControleEstoque extends javax.swing.JFrame {
     /**
      * Creates new form ControleEstoque
      */
+    private GerenciadorDoacao gd;
+
     public ControleEstoque() {
+        this.gd = new GerenciadorDoacao();
         initComponents();
         jTextField1.setVisible(false);
         pegaLinha();
@@ -43,7 +46,6 @@ public class ControleEstoque extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -64,9 +66,12 @@ public class ControleEstoque extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Atualizar");
-
         jButton3.setText("Visualizar Ficha");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -77,8 +82,6 @@ public class ControleEstoque extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -104,7 +107,6 @@ public class ControleEstoque extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -124,22 +126,38 @@ public class ControleEstoque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jTextField1.getText().equals("")){
+        if (jTextField1.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada",
-                            "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                    "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
         } else {
-            GerenciadorDoacao gd = new GerenciadorDoacao();
-            if(gd.remover(jTextField1.getText())){
+            if (gd.remover(jTextField1.getText())) {
                 JOptionPane.showMessageDialog(null, "Excluido com Sucesso");
                 this.dispose();
                 Inicial tela = new Inicial();
                 tela.estoque.doClick(1);
             } else {
                 JOptionPane.showMessageDialog(null, "Erro na exclusão",
-                            "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
-            }  
+                        "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (jTextField1.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada",
+                    "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+            List<Doacao> lista = null;
+            lista = gd.listar();
+            for (Doacao aux : lista) {
+                if (aux.getNome().equals(jTextField1.getText())) {
+                    JOptionPane.showMessageDialog(null,"Doador: " + aux.getNome() + "\nCPF: " + aux.getCpf()
+                            + "\nFator RH: " + aux.getTipoSanguineo() + "\nData da doação: " + aux.getData() + "\nHora da doação: " + aux.getHora());
+                }
+            }
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,13 +193,13 @@ public class ControleEstoque extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void tabela(DefaultTableModel modelo){
+
+    public void tabela(DefaultTableModel modelo) {
         jTable1.setModel(modelo);
         this.setVisible(true);
     }
-    
-    public void pegaLinha(){
+
+    public void pegaLinha() {
         jTable1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 int linha = jTable1.rowAtPoint(e.getPoint());
@@ -195,7 +213,6 @@ public class ControleEstoque extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
