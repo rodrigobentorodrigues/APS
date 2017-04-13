@@ -8,6 +8,7 @@ package Visao;
 import Controle.GerenciadorDoacao;
 import Entidades.Doacao;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -96,6 +97,11 @@ public class Inicial extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton7.setText("Grafico de Doacoes");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel1.setText("Funcionário");
@@ -330,6 +336,21 @@ public class Inicial extends javax.swing.JFrame {
             tela.tabela(modelo);
         }
     }//GEN-LAST:event_estoqueActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+
+        ChartPage chart;
+        try {
+            chart = new ChartPage();
+            chart.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

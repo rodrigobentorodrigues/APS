@@ -32,15 +32,18 @@ public class CrudDoacao implements CrudDoacaoIf {
 
     @Override
     public boolean adicionar(Doacao d) {
-        String sql = "INSERT INTO doacao VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO doacao(cpf, nome, fatorrh, datadedoacao, hora) VALUES(?, ?, ?, ?, ?)";
         PreparedStatement stmt;
         int vrf = 0;
         try {
+            
+            String[] values = d.getData().split("/");
+            
             stmt = con.prepareStatement(sql);
             stmt.setString(1, d.getCpf());
             stmt.setString(2, d.getNome());
             stmt.setString(3, d.getTipoSanguineo());
-            stmt.setString(4, d.getData());
+            stmt.setString(4, values[1]);
             stmt.setString(5, d.getHora());
             vrf = stmt.executeUpdate();
             stmt.close();

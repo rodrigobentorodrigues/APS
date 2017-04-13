@@ -42,7 +42,6 @@ public class Splash extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(720, 360));
         setMinimumSize(new java.awt.Dimension(720, 360));
         getContentPane().setLayout(null);
 
@@ -55,7 +54,7 @@ public class Splash extends javax.swing.JFrame {
         jProgressBar1.setForeground(new java.awt.Color(0, 0, 0));
         jProgressBar1.setStringPainted(true);
         getContentPane().add(jProgressBar1);
-        jProgressBar1.setBounds(280, 190, 146, 20);
+        jProgressBar1.setBounds(270, 190, 170, 20);
 
         jButton1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jButton1.setText("Iniciar Aplicação");
