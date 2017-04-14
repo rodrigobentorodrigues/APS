@@ -63,11 +63,11 @@ public class CrudDoacao implements CrudDoacaoIf {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 Doacao aux = new Doacao();
-                aux.setCpf(rs.getString(1));
-                aux.setNome(rs.getString(2));
-                aux.setTipoSanguineo(rs.getString(3));
-                aux.setData(rs.getString(4));
-                aux.setHora(rs.getString(5));
+                aux.setCpf(rs.getString(2));
+                aux.setNome(rs.getString(3));
+                aux.setTipoSanguineo(rs.getString(4));
+                aux.setData(rs.getString(5));
+                aux.setHora(rs.getString(6));
                 lista.add(aux);
             }
             stmt.close();
