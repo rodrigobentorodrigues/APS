@@ -321,14 +321,15 @@ public class Inicial extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não possui nenhuma doação cadastrada",
                     "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
         } else {
-            String [] titulos  = {"Nome", "Tipo Sanguineo", "Data"};
+            String [] titulos  = {"Id", "Nome", "Tipo Sanguineo", "Data"};
             int size = lista.size();
             System.out.println(size);
-            String [][] matriz = new String [size][3];
+            String [][] matriz = new String [size][4];
             for(int i = 0; i < size; i++){
-                matriz[i][0] = lista.get(i).getNome();
-                matriz[i][1] = lista.get(i).getTipoSanguineo();
-                matriz[i][2] = lista.get(i).getData();
+                matriz[i][0] = lista.get(i).getId();
+                matriz[i][1] = lista.get(i).getNome();
+                matriz[i][2] = lista.get(i).getTipoSanguineo();
+                matriz[i][3] = lista.get(i).getData();
             }
             DefaultTableModel modelo = new DefaultTableModel(matriz, titulos);
             ControleEstoque tela = new ControleEstoque();

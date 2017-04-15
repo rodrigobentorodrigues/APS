@@ -150,7 +150,7 @@ public class ControleEstoque extends javax.swing.JFrame {
             List<Doacao> lista = null;
             lista = gd.listar();
             for (Doacao aux : lista) {
-                if (aux.getNome().equals(jTextField1.getText())) {
+                if (aux.getId().equals(jTextField1.getText())) {
                     JOptionPane.showMessageDialog(null,"Doador: " + aux.getNome() + "\nCPF: " + aux.getCpf()
                             + "\nFator RH: " + aux.getTipoSanguineo() + "\nData da doação: " + aux.getData() + "\nHora da doação: " + aux.getHora());
                 }
@@ -206,7 +206,7 @@ public class ControleEstoque extends javax.swing.JFrame {
                 List<Doacao> lista = null;
                 GerenciadorDoacao gd = new GerenciadorDoacao();
                 lista = gd.listar();
-                jTextField1.setText(lista.get(linha).getNome());
+                jTextField1.setText(lista.get(linha).getId());
             }
         });
     }

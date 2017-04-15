@@ -10,6 +10,7 @@ public class Doacao {
     private String tipoSanguineo;
     private String data;
     private String hora;
+    private String id;
 
     public Doacao(String cpf, String nome, String tipoSanguineo, String data, String hora) {
         this.cpf = cpf;
@@ -19,6 +20,14 @@ public class Doacao {
         this.hora = hora;
     }
 
+    public String getId() {
+        return id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public String getHora() {
         return hora;
     }

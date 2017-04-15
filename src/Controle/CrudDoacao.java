@@ -63,6 +63,7 @@ public class CrudDoacao implements CrudDoacaoIf {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 Doacao aux = new Doacao();
+                aux.setId(rs.getString(1));
                 aux.setCpf(rs.getString(2));
                 aux.setNome(rs.getString(3));
                 aux.setTipoSanguineo(rs.getString(4));
@@ -78,8 +79,8 @@ public class CrudDoacao implements CrudDoacaoIf {
     }
 
     @Override
-    public boolean remover(String nome) {
-        String sql = "DELETE FROM doacao WHERE nome = '" + nome + "'";
+    public boolean remover(String id) {
+        String sql = "DELETE FROM doacao WHERE id = '" + id + "'";
         PreparedStatement stmt;
         int vrf = 0;
         try {
