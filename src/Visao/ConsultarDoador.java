@@ -128,9 +128,9 @@ public class ConsultarDoador extends javax.swing.JFrame {
                 }
             }
             if(vrf){
-                JOptionPane.showMessageDialog(null, doador.getNome() + "\n" + doador.getCpf() + 
-                "\n" + doador.getDataNascimento() + "\n" + doador.getTipoSanguineo() + "\n" + doador.getSexo() 
-                + "\n" + doador.getPeso());
+                UserInfo ui = new UserInfo();
+                ui.setObject(doador);
+                ui.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Não possui esse funcionario no sistema",
                     "Funcionario não encontrado !", JOptionPane.ERROR_MESSAGE);

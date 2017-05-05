@@ -43,7 +43,6 @@ public class Inicial extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         cadastraDoador = new javax.swing.JButton();
-        cadastraFunc = new javax.swing.JButton();
         estoque = new javax.swing.JButton();
         triagem = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -68,14 +67,6 @@ public class Inicial extends javax.swing.JFrame {
         cadastraDoador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastraDoadorActionPerformed(evt);
-            }
-        });
-
-        cadastraFunc.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        cadastraFunc.setText("Cadastrar Funcionario");
-        cadastraFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastraFuncActionPerformed(evt);
             }
         });
 
@@ -162,9 +153,9 @@ public class Inicial extends javax.swing.JFrame {
                     .addComponent(jSeparator3)
                     .addComponent(jSeparator2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cadastraFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(consultaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(removerFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(removerFunc, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(atualizaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -184,13 +175,12 @@ public class Inicial extends javax.swing.JFrame {
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(consultaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadastraDoador, cadastraFunc, estoque, jButton7, triagem});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadastraDoador, estoque, jButton7, triagem});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,11 +191,9 @@ public class Inicial extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cadastraFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removerFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(atualizaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(consultaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(atualizaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(consultaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -236,18 +224,11 @@ public class Inicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cadastraFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraFuncActionPerformed
-        CadastroFuncionario tela = new CadastroFuncionario();
-        tela.setVisible(true);
-    }//GEN-LAST:event_cadastraFuncActionPerformed
 
     private void cadastraDoadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraDoadorActionPerformed
         CadastroDoador tela = new CadastroDoador();
@@ -294,13 +275,16 @@ public class Inicial extends javax.swing.JFrame {
 
                     for (Doacao doc : lista) {
                         if(nome.equals(doc.getNome()))
-                            stb.append(doc.getCpf() + ": " + doc.getHora() + " - " + doc.getData() + "\n");
+                            stb.append(" "+doc.getCpf() + ": " + doc.getHora() + " - " + doc.getData() + "\n");
                     }
 
                     if(stb.toString().equals("")){
                         JOptionPane.showMessageDialog(null, "nenhuma doação foi realizada por este doador");
                     }else{
-                        JOptionPane.showMessageDialog(null, stb);
+                        //JOptionPane.showMessageDialog(null, stb);
+                        DadosDoacao dd = new DadosDoacao();
+                        dd.setDoacoes(stb.toString());
+                        dd.setVisible(true);
                     }
 
                 }else{
@@ -393,7 +377,6 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JButton ConsultaDoador;
     private javax.swing.JButton atualizaFunc;
     private javax.swing.JButton cadastraDoador;
-    private javax.swing.JButton cadastraFunc;
     private javax.swing.JButton consultaFunc;
     public javax.swing.JButton estoque;
     private javax.swing.JButton jButton7;

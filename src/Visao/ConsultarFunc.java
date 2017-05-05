@@ -126,7 +126,9 @@ public class ConsultarFunc extends javax.swing.JFrame {
                 }
             }
             if(vrf){
-                JOptionPane.showMessageDialog(null, func.getNome() + "\n" + func.getHabilitacao() + "\n" + func.getSexo());
+                UserInfo userInfo = new UserInfo();
+                userInfo.setObject(func);
+                userInfo.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Não possui esse funcionario no sistema",
                         "Funcionario não encontrado !", JOptionPane.ERROR_MESSAGE);
