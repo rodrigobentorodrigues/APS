@@ -163,20 +163,21 @@ public class Login extends javax.swing.JFrame {
         
         String login = jTextField1.getText();
         String senha = jTextField2.getText();
-        Inicial inicial = null;
-        
+        Abas a = null;
         GerenciadorFuncionario gf = new GerenciadorFuncionario();
         List<Funcionario> lista = gf.listar();
         
         for(Funcionario func : lista){
-            if(func.getEmail().equals(login) && func.getSenha().equals(senha)){
-                inicial = new Inicial();
-                inicial.setVisible(true);
+            if(func.getEmail().equals(login) && func.getSenha().equals(senha)){        
+                a = new Abas();
+                a.setVisible(true);
                 this.dispose();
             }
         }
         
-        if(inicial == null){
+        if(a == null){
+            jTextField1.setText("");
+            jTextField2.setText("");
             JOptionPane.showMessageDialog(null, "Login Invalido");
         }
         

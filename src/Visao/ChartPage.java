@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,6 +30,8 @@ public class ChartPage extends JFrame{
         Container container = getContentPane();  
         container.setLayout(null);
         
+        ImageIcon logo = new ImageIcon("src/Imagens/icone.png");
+        setIconImage(logo.getImage());
         
         criarBotao(container);
         container.add(chartP);

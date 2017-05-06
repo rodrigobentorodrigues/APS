@@ -4,6 +4,7 @@ package Visao;
 import Controle.GerenciadorDoador;
 import Entidades.Doador;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -23,6 +24,8 @@ public class ConsultarDoador extends javax.swing.JFrame {
      */
     public ConsultarDoador() {
         initComponents();
+        ImageIcon logo = new ImageIcon("src/Imagens/icone.png");
+        setIconImage(logo.getImage());
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }

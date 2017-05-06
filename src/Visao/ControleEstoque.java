@@ -9,6 +9,7 @@ import Controle.GerenciadorDoacao;
 import Entidades.Doacao;
 import java.awt.event.MouseAdapter;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,6 +27,9 @@ public class ControleEstoque extends javax.swing.JFrame {
     public ControleEstoque() {
         this.gd = new GerenciadorDoacao();
         initComponents();
+        ImageIcon logo = new ImageIcon("src/Imagens/icone.png");
+        setIconImage(logo.getImage());
+        setLocationRelativeTo(null);
         jTextField1.setVisible(false);
         pegaLinha();
     }
