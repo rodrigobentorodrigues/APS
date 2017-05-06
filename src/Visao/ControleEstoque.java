@@ -137,8 +137,8 @@ public class ControleEstoque extends javax.swing.JFrame {
             if (gd.remover(jTextField1.getText())) {
                 JOptionPane.showMessageDialog(null, "Excluido com Sucesso");
                 this.dispose();
-                Inicial tela = new Inicial();
-                tela.estoque.doClick(1);
+                Abas abas = new Abas();
+                abas.estoque.doClick(1);
             } else {
                 JOptionPane.showMessageDialog(null, "Erro na exclusão",
                         "Mensagem de erro", JOptionPane.ERROR_MESSAGE);

@@ -7,6 +7,7 @@ package Visao;
 
 import Controle.GerenciadorDoacao;
 import Entidades.Doacao;
+import java.awt.Rectangle;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,8 +29,9 @@ public class Abas extends javax.swing.JFrame {
         initComponents();
         ImageIcon logo = new ImageIcon("src/Imagens/icone.png");
         setIconImage(logo.getImage());
-        setLocationRelativeTo(null);
         setResizable(false);
+        setBounds(new Rectangle(420, 450));
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -60,7 +62,6 @@ public class Abas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(425, 358));
         getContentPane().setLayout(null);
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -225,6 +226,10 @@ public class Abas extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastraDoadorActionPerformed
 
     private void consultaDoacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDoacoesActionPerformed
+
+        //ConsultarDoacao cd = new ConsultarDoacao();
+        //cd.setVisible(true);
+        
         File log = new File("C:/logs/log.txt");
 
         if (log.exists()) {
@@ -341,7 +346,7 @@ public class Abas extends javax.swing.JFrame {
     private javax.swing.JButton consultaDoacoes;
     private javax.swing.JButton consultaDoador;
     private javax.swing.JButton consultaFunc;
-    private javax.swing.JButton estoque;
+    public javax.swing.JButton estoque;
     private javax.swing.JButton graficoDoacoes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
