@@ -45,7 +45,7 @@ public class AtualizaFunc extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
-        campoSexo = new javax.swing.JComboBox<String>();
+        campoSexo = new javax.swing.JComboBox<>();
         campoHabilitacao = new javax.swing.JTextField();
         campoIdade = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -81,7 +81,7 @@ public class AtualizaFunc extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Idade");
 
-        campoSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino" }));
+        campoSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

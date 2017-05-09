@@ -1,12 +1,12 @@
 package Controle;
 
 import Entidades.Doacao;
-import Entidades.Doador;
 import interfaces.CrudDoacaoIf;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +36,6 @@ public class CrudDoacao implements CrudDoacaoIf {
         PreparedStatement stmt;
         int vrf = 0;
         try {
-            
             String[] values = d.getData().split("/");
             
             stmt = con.prepareStatement(sql);

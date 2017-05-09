@@ -69,9 +69,10 @@ public class CadastroDoador extends javax.swing.JFrame {
         aidsSim = new javax.swing.JCheckBox();
         barbeiroNao = new javax.swing.JCheckBox();
         barbeiroSim = new javax.swing.JCheckBox();
-        sexo = new javax.swing.JComboBox<String>();
+        sexo = new javax.swing.JComboBox<>();
         cpf = new javax.swing.JFormattedTextField();
-        tipoSanguineo = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -208,7 +209,7 @@ public class CadastroDoador extends javax.swing.JFrame {
             }
         });
 
-        sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino" }));
+        sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -220,6 +221,10 @@ public class CadastroDoador extends javax.swing.JFrame {
                 cpfActionPerformed(evt);
             }
         });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "AB", "O" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "+" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -242,12 +247,15 @@ public class CadastroDoador extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(nome)
                                     .addComponent(dataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(peso, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                                     .addComponent(sexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cpf)
-                                    .addComponent(tipoSanguineo))
+                                    .addComponent(cpf))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,7 +294,7 @@ public class CadastroDoador extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cpf, nome, peso, tipoSanguineo});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cpf, nome, peso});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,10 +329,11 @@ public class CadastroDoador extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoSanguineo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(drogasSim)
@@ -356,7 +365,7 @@ public class CadastroDoador extends javax.swing.JFrame {
                 .addGap(33, 33, 33))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cpf, dataNascimento, nome, peso});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cpf, dataNascimento, jComboBox1, nome, peso});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -368,7 +377,7 @@ public class CadastroDoador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
         pack();
@@ -382,7 +391,6 @@ public class CadastroDoador extends javax.swing.JFrame {
         nome.setText("");
         cpf.setText("");
         peso.setText("");
-        tipoSanguineo.setText("");
         Date hora = new Date();
         hora.getTime();
         dataNascimento.setDate(hora);
@@ -479,7 +487,7 @@ public class CadastroDoador extends javax.swing.JFrame {
         String p = peso.getText();
         p = p.replace(",", ".");
         double pesoUsu = Double.parseDouble(p);
-        String rh = tipoSanguineo.getText();
+        String rh = (String) this.jComboBox1.getSelectedItem() + (String) this.jComboBox2.getSelectedItem();
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
         String data = f.format(dataNascimento.getDate());
         boolean valido = true;
@@ -597,6 +605,8 @@ public class CadastroDoador extends javax.swing.JFrame {
     private javax.swing.JCheckBox drogasSim;
     private javax.swing.JCheckBox hepatiteNao;
     private javax.swing.JCheckBox hepatiteSim;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -614,6 +624,5 @@ public class CadastroDoador extends javax.swing.JFrame {
     private javax.swing.JTextField nome;
     private javax.swing.JTextField peso;
     private javax.swing.JComboBox<String> sexo;
-    private javax.swing.JTextField tipoSanguineo;
     // End of variables declaration//GEN-END:variables
 }

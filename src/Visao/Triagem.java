@@ -5,6 +5,12 @@
  */
 package Visao;
 
+import Controle.GerenciadorDoacao;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -13,6 +19,8 @@ import javax.swing.JOptionPane;
  * @author Juan
  */
 public class Triagem extends javax.swing.JFrame {
+
+    private String date, hora, cpf, nome, fator;
 
     /**
      * Creates new form Triagem
@@ -316,49 +324,49 @@ public class Triagem extends javax.swing.JFrame {
 
     private void gripeSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gripeSimActionPerformed
         boolean cond = gripeSim.isSelected();
-        if (cond){
+        if (cond) {
             gripeNao.setSelected(false);
         }
     }//GEN-LAST:event_gripeSimActionPerformed
 
     private void bebidaSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidaSimActionPerformed
         boolean cond = bebidaSim.isSelected();
-        if (cond){
+        if (cond) {
             bebidaNao.setSelected(false);
         }
     }//GEN-LAST:event_bebidaSimActionPerformed
 
     private void tatuagemSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tatuagemSimActionPerformed
         boolean cond = tatuagemSim.isSelected();
-        if (cond){
+        if (cond) {
             tatuagemNao.setSelected(false);
         }
     }//GEN-LAST:event_tatuagemSimActionPerformed
 
     private void vacinaSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vacinaSimActionPerformed
         boolean cond = vacinaSim.isSelected();
-        if (cond){
+        if (cond) {
             vacinaNao.setSelected(false);
         }
     }//GEN-LAST:event_vacinaSimActionPerformed
 
     private void herpesSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herpesSimActionPerformed
         boolean cond = herpesSim.isSelected();
-        if (cond){
+        if (cond) {
             herpesNao.setSelected(false);
         }
     }//GEN-LAST:event_herpesSimActionPerformed
 
     private void faSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faSimActionPerformed
         boolean cond = faSim.isSelected();
-        if (cond){
+        if (cond) {
             faNao.setSelected(false);
         }
     }//GEN-LAST:event_faSimActionPerformed
 
     private void bebidaNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidaNaoActionPerformed
         boolean cond = bebidaNao.isSelected();
-        if (cond){
+        if (cond) {
             bebidaSim.setSelected(false);
         }
     }//GEN-LAST:event_bebidaNaoActionPerformed
@@ -402,9 +410,35 @@ public class Triagem extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "todas as informações necessárias não foram preenchidas", "Ops!",
                     0);
         } else if (vrfs) {
-                RealizarDoacao tela = new RealizarDoacao();
-                tela.setVisible(true);
-                this.dispose();
+            GerenciadorDoacao cad = new GerenciadorDoacao();
+
+            if (cad.adicionar(cpf, nome, fator, date, hora)) {
+
+                try {
+                    File arquivo = new File("C:/logs/log.txt");
+                    if (!arquivo.exists()) {
+                        arquivo.createNewFile();
+                    }
+
+                    String log = date + " as " + hora + " - " + cpf + " - " + nome + "> " + fator;
+
+                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(arquivo, true)));
+
+                    bw.write(log);
+                    bw.newLine();
+                    bw.close();
+
+                    JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
+                    this.dispose();
+
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar doacao",
+                        "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
+            }
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Esse doador não está em condições de realizar alguma doação atualmente",
                     "Ops!", 0);
@@ -415,35 +449,35 @@ public class Triagem extends javax.swing.JFrame {
 
     private void gripeNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gripeNaoActionPerformed
         boolean cond = gripeNao.isSelected();
-        if (cond){
+        if (cond) {
             gripeSim.setSelected(false);
         }
     }//GEN-LAST:event_gripeNaoActionPerformed
 
     private void tatuagemNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tatuagemNaoActionPerformed
         boolean cond = tatuagemNao.isSelected();
-        if (cond){
+        if (cond) {
             tatuagemSim.setSelected(false);
         }
     }//GEN-LAST:event_tatuagemNaoActionPerformed
 
     private void vacinaNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vacinaNaoActionPerformed
         boolean cond = vacinaNao.isSelected();
-        if (cond){
+        if (cond) {
             vacinaSim.setSelected(false);
         }
     }//GEN-LAST:event_vacinaNaoActionPerformed
 
     private void herpesNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_herpesNaoActionPerformed
         boolean cond = herpesNao.isSelected();
-        if (cond){
+        if (cond) {
             herpesSim.setSelected(false);
         }
     }//GEN-LAST:event_herpesNaoActionPerformed
 
     private void faNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_faNaoActionPerformed
         boolean cond = faNao.isSelected();
-        if (cond){
+        if (cond) {
             faSim.setSelected(false);
         }
     }//GEN-LAST:event_faNaoActionPerformed
@@ -507,4 +541,12 @@ public class Triagem extends javax.swing.JFrame {
     private javax.swing.JCheckBox vacinaNao;
     private javax.swing.JCheckBox vacinaSim;
     // End of variables declaration//GEN-END:variables
+
+    void setDadosDoacao(String date, String hora, String cpfDoador, String nomeDoador, String fator) {
+        this.fator = fator;
+        this.date = date;
+        this.cpf = cpfDoador;
+        this.nome = nomeDoador;
+        this.hora = hora;
+    }
 }

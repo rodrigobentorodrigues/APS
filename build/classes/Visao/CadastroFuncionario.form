@@ -61,7 +61,6 @@
                                   <Component id="jLabel4" alignment="0" pref="74" max="32767" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel5" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jLabel9" alignment="0" pref="93" max="32767" attributes="0"/>
                           </Group>
@@ -70,10 +69,7 @@
                               <Component id="campoNome" linkSize="5" max="32767" attributes="0"/>
                               <Component id="campoSexo" min="-2" pref="181" max="-2" attributes="0"/>
                               <Component id="campoHabilitacao" linkSize="5" alignment="0" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="data" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="campoIdade" linkSize="5" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="data" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
@@ -128,17 +124,12 @@
                       <Component id="jLabel4" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="campoHabilitacao" linkSize="4" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="campoIdade" linkSize="4" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jLabel5" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel9" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="data" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="32767" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
@@ -197,14 +188,6 @@
             <Property name="text" type="java.lang.String" value="Habilita&#xe7;&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Idade"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="campoNome">
         </Component>
         <Component class="javax.swing.JComboBox" name="campoSexo">
@@ -221,8 +204,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="campoHabilitacao">
-        </Component>
-        <Component class="javax.swing.JTextField" name="campoIdade">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>

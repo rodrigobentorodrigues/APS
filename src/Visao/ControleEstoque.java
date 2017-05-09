@@ -156,7 +156,7 @@ public class ControleEstoque extends javax.swing.JFrame {
             for (Doacao aux : lista) {
                 if (aux.getId().equals(jTextField1.getText())) {
                     String doacao = "Doador: " + aux.getNome() + "\nCPF: " + aux.getCpf() + "\nFator RH: " + 
-                            aux.getTipoSanguineo() + "\nData da doação: " + aux.getData() + "\nHora da doação: " + 
+                            aux.getTipoSanguineo() + "\nMês da doação: " + aux.getData() + "\nHora da doação: " + 
                                     aux.getHora();
                     
                     DadosDoacao dd = new DadosDoacao();

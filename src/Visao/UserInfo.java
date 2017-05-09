@@ -46,6 +46,7 @@ public class UserInfo extends javax.swing.JFrame {
 
     private void setValoresFunc(Object obj) {
         Funcionario func = (Funcionario) obj;
+        this.jLabel1.setText("Informações do Usuário");
         this.jLabel4.setText(" Nome:  " + func.getNome());
         this.jLabel5.setText(" Habilitação:  " + func.getHabilitacao());
         this.jLabel7.setText(" Sexo:  " + func.getSexo());
@@ -53,6 +54,7 @@ public class UserInfo extends javax.swing.JFrame {
 
     private void setValoresDoad(Object obj) {
         Doador doador = (Doador) obj;
+        this.jLabel1.setText("Informações do Doador");
         this.jLabel4.setText(" Nome:  " + doador.getNome());
         this.jLabel5.setText(" Nascimento:  " + doador.getDataNascimento());
         this.jLabel7.setText(" Sexo:  " + doador.getSexo());
@@ -86,7 +88,6 @@ public class UserInfo extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/info.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
-        jLabel1.setText("Informações do Usuário");
 
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
 
@@ -138,7 +139,7 @@ public class UserInfo extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -211,7 +211,7 @@ public class Abas extends javax.swing.JFrame {
     }//GEN-LAST:event_consultaFuncActionPerformed
 
     private void triagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_triagemActionPerformed
-        Triagem tela = new Triagem();
+        RealizarDoacao tela = new RealizarDoacao();
         tela.setVisible(true);
     }//GEN-LAST:event_triagemActionPerformed
 
@@ -226,45 +226,8 @@ public class Abas extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastraDoadorActionPerformed
 
     private void consultaDoacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDoacoesActionPerformed
-
-        //ConsultarDoacao cd = new ConsultarDoacao();
-        //cd.setVisible(true);
-        
-        File log = new File("C:/logs/log.txt");
-
-        if (log.exists()) {
-            //infelizmente a preguiça me fez fazer isso, nao queria criar outra tela so pra pegar o nome do cara
-            String nome = JOptionPane.showInputDialog(null, "Informe o nome do doador");
-            GerenciadorDoacao gd = new GerenciadorDoacao();
-            if (!(nome == null)) {
-                if (!nome.equals("")) {
-                    List<Doacao> lista = gd.listar();
-
-                    StringBuilder stb = new StringBuilder("");
-
-                    for (Doacao doc : lista) {
-                        if (nome.equals(doc.getNome())) {
-                            stb.append(" " + doc.getCpf() + ": " + doc.getHora() + " - " + doc.getData() + "\n");
-                        }
-                    }
-
-                    if (stb.toString().equals("")) {
-                        JOptionPane.showMessageDialog(null, "nenhuma doação foi realizada por este doador");
-                    } else {
-                        //JOptionPane.showMessageDialog(null, stb);
-                        DadosDoacao dd = new DadosDoacao();
-                        dd.setDoacoes(stb.toString());
-                        dd.setVisible(true);
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Digite o nome do doador!!!");
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "não foram feitas doações ainda", "Ops!", JOptionPane.ERROR_MESSAGE);
-            log.delete();
-        }
+        ConsultarDoacao cd = new ConsultarDoacao();
+        cd.setVisible(true);
     }//GEN-LAST:event_consultaDoacoesActionPerformed
 
     private void graficoDoacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficoDoacoesActionPerformed
@@ -288,7 +251,7 @@ public class Abas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não possui nenhuma doação cadastrada",
                     "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
         } else {
-            String[] titulos = {"Id", "Nome", "Tipo Sanguineo", "Data"};
+            String[] titulos = {"Id", "Nome", "Tipo Sanguineo", "Mês da doação"};
             int size = lista.size();
             System.out.println(size);
             String[][] matriz = new String[size][4];

@@ -25,6 +25,7 @@ public class RealizarDoacao extends javax.swing.JFrame {
         setIconImage(logo.getImage());
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         Date hora = new Date();
         data.setDate(hora);
         data.setEnabled(false);
@@ -93,7 +94,7 @@ public class RealizarDoacao extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Data");
 
-        confirmar.setText("Confirmar Doação");
+        confirmar.setText("Confirmar Doador");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarActionPerformed(evt);
@@ -268,36 +269,11 @@ public class RealizarDoacao extends javax.swing.JFrame {
             String cpfDoador = cpf.getText();
             String nomeDoador = nome.getText();
             String fator = fatorrh.getText();
-            GerenciadorDoacao cad = new GerenciadorDoacao();
-
-            if (cad.adicionar(cpfDoador, nomeDoador, fator, date, hora)) {
-
-                try {
-                    File arquivo = new File("C:/logs/log.txt");
-                    if (!arquivo.exists()) {
-                        arquivo.createNewFile();
-                    }
-
-                    String log = date + " as " + hora + " - " + cpfDoador + " - " + nomeDoador + "> " + fator;
-
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(arquivo, true)));
-
-                    bw.write(log);
-                    bw.newLine();
-                    bw.close();
-
-                    JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
-                    this.dispose();
-
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao salvar doacao",
-                        "Mensagem de Erro !", JOptionPane.ERROR_MESSAGE);
-                limparTela();
-            }
-
+            
+            Triagem triagem = new Triagem();
+            triagem.setDadosDoacao(date, hora, cpfDoador, nomeDoador, fator);
+            triagem.setVisible(true);
+            
         }
     }//GEN-LAST:event_confirmarActionPerformed
 
